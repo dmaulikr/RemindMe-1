@@ -8,12 +8,13 @@
 
 #import "EditViewController.h"
 
-#import "ViewController.h"
+#import "ReminderTableViewController.h"
 
 
 @interface EditViewController ()
 @property (nonatomic) UIButton *saveButton;
 @property (nonatomic) UIButton *deleteButton;
+@property (nonatomic) UITextField *editReminderTextField;
 
 @end
 
@@ -40,20 +41,15 @@
     [self.view addSubview:self.deleteButton];
     
     self.editReminderTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 100, 200, 40)];
-    self.editReminderTextField.backgroundColor = [UIColor grayColor];
-    self.editReminderTextField.text = self.editString;
+    self.editReminderTextField.backgroundColor = [UIColor yellowColor];
+    self.editReminderTextField.text = self.editedReminder.reminderString;
     [self.view addSubview: self.editReminderTextField];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) saveButtonPressed{
     // Send the text from textfield to table
-    Reminder *saveReminder = [[Reminder alloc] init];
-    saveReminder.aString = self.editReminderTextField.text;
+    self.editedReminder.reminderString = self.editReminderTextField.text;
+    [self.delegate editViewController:self savedReminder:self.editedReminder];
     [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"editButton pressed");
 }
@@ -61,16 +57,8 @@
 - (void) deleteButtonPressed{
     NSLog(@"deleteButton pressed");
     self.editReminderTextField.text = @"";
+    [self.delegate editViewController:self deletedReminder:self.editedReminder];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

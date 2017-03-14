@@ -11,7 +11,7 @@
 		1A75A3DA1E66753700DC565D /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A75A3D91E66753700DC565D /* EditViewController.m */; };
 		1AD6A1CA1E57EE5600B7F71A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6A1C91E57EE5600B7F71A /* main.m */; };
 		1AD6A1CD1E57EE5600B7F71A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6A1CC1E57EE5600B7F71A /* AppDelegate.m */; };
-		1AD6A1D01E57EE5600B7F71A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6A1CF1E57EE5600B7F71A /* ViewController.m */; };
+		1AD6A1D01E57EE5600B7F71A /* ReminderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6A1CF1E57EE5600B7F71A /* ReminderTableViewController.m */; };
 		1AD6A1D51E57EE5600B7F71A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6A1D41E57EE5600B7F71A /* Assets.xcassets */; };
 		1AD6A1D81E57EE5600B7F71A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD6A1D61E57EE5600B7F71A /* LaunchScreen.storyboard */; };
 		1AD6A1E71E5814AC00B7F71A /* AddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD6A1E61E5814AC00B7F71A /* AddReminderViewController.m */; };
@@ -26,8 +26,8 @@
 		1AD6A1C91E57EE5600B7F71A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1AD6A1CB1E57EE5600B7F71A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1AD6A1CC1E57EE5600B7F71A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1AD6A1CE1E57EE5600B7F71A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1AD6A1CF1E57EE5600B7F71A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1AD6A1CE1E57EE5600B7F71A /* ReminderTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReminderTableViewController.h; sourceTree = "<group>"; };
+		1AD6A1CF1E57EE5600B7F71A /* ReminderTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReminderTableViewController.m; sourceTree = "<group>"; };
 		1AD6A1D41E57EE5600B7F71A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1AD6A1D71E57EE5600B7F71A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1AD6A1D91E57EE5600B7F71A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +46,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A4C903E1E777638005976A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A09F6AE1E5E3F13003D7238 /* Reminder.h */,
+				1A09F6AF1E5E3F13003D7238 /* Reminder.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1A4C903F1E777642005976A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1A4C90401E777649005976A5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1AD6A1E51E5814AC00B7F71A /* AddReminderViewController.h */,
+				1AD6A1E61E5814AC00B7F71A /* AddReminderViewController.m */,
+				1A75A3D81E66753700DC565D /* EditViewController.h */,
+				1A75A3D91E66753700DC565D /* EditViewController.m */,
+				1AD6A1CE1E57EE5600B7F71A /* ReminderTableViewController.h */,
+				1AD6A1CF1E57EE5600B7F71A /* ReminderTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1A4C90411E777699005976A5 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				1AD6A1D41E57EE5600B7F71A /* Assets.xcassets */,
+				1AD6A1D91E57EE5600B7F71A /* Info.plist */,
+				1AD6A1D61E57EE5600B7F71A /* LaunchScreen.storyboard */,
+			);
+			name = Supporting;
+			sourceTree = "<group>";
+		};
 		1AD6A1BC1E57EE5600B7F71A = {
 			isa = PBXGroup;
 			children = (
@@ -67,17 +106,10 @@
 			children = (
 				1AD6A1CB1E57EE5600B7F71A /* AppDelegate.h */,
 				1AD6A1CC1E57EE5600B7F71A /* AppDelegate.m */,
-				1AD6A1CE1E57EE5600B7F71A /* ViewController.h */,
-				1AD6A1CF1E57EE5600B7F71A /* ViewController.m */,
-				1AD6A1E51E5814AC00B7F71A /* AddReminderViewController.h */,
-				1AD6A1E61E5814AC00B7F71A /* AddReminderViewController.m */,
-				1A09F6AE1E5E3F13003D7238 /* Reminder.h */,
-				1A09F6AF1E5E3F13003D7238 /* Reminder.m */,
-				1A75A3D81E66753700DC565D /* EditViewController.h */,
-				1A75A3D91E66753700DC565D /* EditViewController.m */,
-				1AD6A1D41E57EE5600B7F71A /* Assets.xcassets */,
-				1AD6A1D61E57EE5600B7F71A /* LaunchScreen.storyboard */,
-				1AD6A1D91E57EE5600B7F71A /* Info.plist */,
+				1A4C903E1E777638005976A5 /* Models */,
+				1A4C903F1E777642005976A5 /* Views */,
+				1A4C90401E777649005976A5 /* Controllers */,
+				1A4C90411E777699005976A5 /* Supporting */,
 				1AD6A1C81E57EE5600B7F71A /* Supporting Files */,
 			);
 			path = RemindMe;
@@ -162,7 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD6A1E71E5814AC00B7F71A /* AddReminderViewController.m in Sources */,
-				1AD6A1D01E57EE5600B7F71A /* ViewController.m in Sources */,
+				1AD6A1D01E57EE5600B7F71A /* ReminderTableViewController.m in Sources */,
 				1AD6A1CD1E57EE5600B7F71A /* AppDelegate.m in Sources */,
 				1A75A3DA1E66753700DC565D /* EditViewController.m in Sources */,
 				1A09F6B01E5E3F13003D7238 /* Reminder.m in Sources */,

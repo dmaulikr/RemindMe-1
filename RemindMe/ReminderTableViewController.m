@@ -6,16 +6,18 @@
 //  Copyright © 2017 6thManApps. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ReminderTableViewController.h"
 #import "AddReminderViewController.h"
+#import "EditViewController.h"
 #import "Reminder.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ReminderTableViewController () <UITableViewDataSource, UITableViewDelegate, AddReminderViewControllerDelegate, EditViewControllerDelegate>
 @property (nonatomic) UITableView *reminderTableView;
 @property (nonatomic) UIBarButtonItem *reminderButton;
+@property (nonatomic) NSMutableArray *reminderArray;
 @end
 
-@implementation ViewController
+@implementation ReminderTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,7 +59,7 @@
     Reminder *reminderAtIndexPath = [self.reminderArray objectAtIndex:indexPath.row];
     
     // we are updating our view from our model
-    cell.textLabel.text = reminderAtIndexPath.aString;
+    cell.textLabel.text = reminderAtIndexPath.reminderString;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",reminderAtIndexPath.reminderDate];
 
     return cell;
@@ -65,13 +67,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    Reminder *reminderAtIndexPath = [self.reminderArray objectAtIndex:indexPath.row];
     EditViewController *editVC = [[EditViewController alloc] init];
+    editVC.editedReminder = reminderAtIndexPath;
+    editVC.delegate = self;
     [self.navigationController pushViewController:editVC animated:YES];
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    editVC.navigationItem.title = cell.textLabel.text;
-    editVC.editString = cell.textLabel.text;
-    NSLog(@"Cell Tapped");
 }
 
 - (void) reminderButtonPressed
@@ -94,6 +94,13 @@
     NSLog(@"Added %@ to array", reminder);
 }
 
+- (void)editViewController:(EditViewController *)editVC savedReminder:(Reminder *)reminder {
+    [self.reminderTableView reloadData];
+}
 
+- (void)editViewController:(EditViewController *)editVC deletedReminder:(Reminder *)reminder {
+    [self.reminderArray removeObject:reminder];
+    [self.reminderTableView reloadData];
+}
 
 @end
