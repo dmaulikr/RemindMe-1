@@ -34,32 +34,16 @@
     self.addReminderButton.backgroundColor = [UIColor blueColor];
     [self.addReminderButton setTitle:@"Add" forState:UIControlStateNormal];
     [self.addReminderButton addTarget:self action:@selector(addReminderButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.addReminderButton];
-    NSLog(@"%@", self.navigationController.viewControllers);
-    
+    [self.view addSubview:self.addReminderButton];    
 }
 
 - (void)addReminderButtonPressed
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
     Reminder *newReminder = [[Reminder alloc] init];
-    newReminder.aString = self.reminderTextField.text;
+    newReminder.reminderString = self.reminderTextField.text;
     newReminder.reminderDate = [NSDate date];
     [self.delegate addReminderViewController:self createdReminder:newReminder];
-    // 1. Go back to previous VC after button pressed
-    // 2. Notify delegate of the reminder that we created
-    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

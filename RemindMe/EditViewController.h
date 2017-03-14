@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Reminder.h"
-
+@protocol EditViewControllerDelegate;
 @interface EditViewController : UIViewController
+@property (nonatomic, weak) id<EditViewControllerDelegate> delegate;
 
-@property (nonatomic) UITextField *editReminderTextField;
 @property (nonatomic) Reminder *editedReminder;
+
+@end
+
+@protocol EditViewControllerDelegate <NSObject>
+
+- (void)editViewController:(EditViewController *)editVC savedReminder:(Reminder *)reminder;
+- (void)editViewController:(EditViewController *)editVC deletedReminder:(Reminder *)reminder;
 
 @end

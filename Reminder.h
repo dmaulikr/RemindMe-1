@@ -10,7 +10,7 @@
 
 @interface Reminder : NSObject
 
-@property (nonatomic) NSString *aString;
+@property (nonatomic) NSString *reminderString;
 @property (nonatomic) NSDate *reminderDate;
 
 @end
